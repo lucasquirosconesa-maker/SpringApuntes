@@ -10,15 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vedrunaSevilla.product.persistance.model.Product;
 import com.vedrunaSevilla.product.service.ProductService;
 
-import lombok.AllArgsConstructor;
-
 @RestController
 @RequestMapping ("/api/v1/products")
 @CrossOrigin 
-@AllArgsConstructor 
 public class ProductController {
 
     ProductService productService;
+
+    ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping 
     public List<Product> getAllProducts() {
