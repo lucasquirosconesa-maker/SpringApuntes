@@ -10,27 +10,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity 
-@Table (name = "products")
-@NoArgsConstructor 
+@Table (name = "pokemon_abilities")
+@NoArgsConstructor
 @Data 
-public class Product {
-
+public class PokemonAbility {
     @Id 
-    @Column (name = "product_id")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long productId;
-
-    @Column (name = "product_name")
+    @Column (name = "pokemon_ability_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column (name = "pokemon_ability_name")
     private String name;
-
-    @Column(name = "product_price") 
-    private double price;
-
-    @Column(name = "product_description") 
+    @Column (name = "description")
     private String description;
-
-    @Column (name = "product_code")
-    private String sku;
-
-    
 }
