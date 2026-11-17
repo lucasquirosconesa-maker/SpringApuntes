@@ -2,8 +2,7 @@ spring:
   application:
     name: Producto
   datasource:
-    url: jdbc:mysql://localhost:3306/Tiendadb?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
+    url: jdbc:mysql://localhost:3306/pokemondb?createDatabaseIfNotExist=true&useUnicode=true
     password: Rafael27
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
