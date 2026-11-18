@@ -13,9 +13,15 @@ import com.vedrunaSevilla.product.persistance.model.Pokemon;
 import com.vedrunaSevilla.product.persistance.model.PokemonAbility;
 import com.vedrunaSevilla.product.persistance.model.PokemonStats;
 import com.vedrunaSevilla.product.persistance.model.Trainer;
+import com.vedrunaSevilla.product.service.TrainerService;
 
 @Component 
 public class Converter {
+    TrainerService trainerService;
+
+    public Converter(TrainerService trainerService) {
+        this.trainerService = trainerService;
+    }
 
     public PokemonDto convertToDto(Pokemon pokemon) {
         PokemonDto pokemonDto = new PokemonDto();
@@ -23,6 +29,14 @@ public class Converter {
         pokemonDto.setName(pokemon.getName());
         pokemonDto.setType(pokemon.getType());
         pokemonDto.setDescription(pokemon.getDescription());
+        if (pokemon.getTrainer() != null) {
+            pokemonDto.setTrainerId(pokemon.getTrainer().getId());
+        }
+        List<PokemonAbilityDto> pokemonAbilityDtos = new ArrayList<>();
+        for (PokemonAbility pokemonAbility : pokemon.getAbilityList()) {
+            pokemonAbilityDtos.add(convertToDto(pokemonAbility));
+        }
+        pokemonDto.setAbilityList(pokemonAbilityDtos);
         return pokemonDto;
     }
     public Pokemon convertToEntity(PokemonDto pokemonDto) {
@@ -30,6 +44,14 @@ public class Converter {
         pokemon.setName(pokemonDto.getName());
         pokemon.setType(pokemonDto.getType());
         pokemon.setDescription(pokemonDto.getDescription());
+        if (pokemonDto.getTrainerId() != null) {
+            pokemon.setTrainer(trainerService.getTrainerById(pokemonDto.getTrainerId()));
+        }
+        List<PokemonAbility> pokemonAbilities = new ArrayList<>();
+        for (PokemonAbilityDto pokemonAbilityDto : pokemonDto.getAbilityList()) {
+            pokemonAbilities.add(convertToEntity(pokemonAbilityDto));
+        }
+        pokemon.setAbilityList(pokemonAbilities);
         return pokemon;
     }
 
@@ -63,9 +85,7 @@ public class Converter {
         dto.setId(pokemonStats.getId());
         dto.setHp(pokemonStats.getHp());
         dto.setAtk(pokemonStats.getAtk());
-        dto.setSpAtk(pokemonStats.getSpAtk());
         dto.setDef(pokemonStats.getDef());
-        dto.setSpDef(pokemonStats.getSpDef());
         dto.setSpd(pokemonStats.getSpd());
         dto.setHeight(pokemonStats.getHeight());
         dto.setWeight(pokemonStats.getWeight());
@@ -76,9 +96,7 @@ public class Converter {
         pokemonStats.setPokemon(dto.getPokemon());
         pokemonStats.setHp(dto.getHp());
         pokemonStats.setAtk(dto.getAtk());
-        pokemonStats.setSpAtk(dto.getSpAtk());
         pokemonStats.setDef(dto.getDef());
-        pokemonStats.setSpDef(dto.getSpDef());
         pokemonStats.setSpd(dto.getSpd());
         pokemonStats.setHeight(dto.getHeight());
         pokemonStats.setWeight(dto.getWeight());

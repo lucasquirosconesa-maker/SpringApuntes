@@ -29,8 +29,9 @@ public class TrainerController {
     TrainerService trainerService;
     Converter converter;
 
-    TrainerController(TrainerService trainerService) {
+    TrainerController(TrainerService trainerService, Converter converter) {
         this.trainerService = trainerService;
+        this.converter = converter;
     }
 
     @GetMapping 

@@ -42,9 +42,7 @@ public class PokemonStatsServiceImpl implements PokemonStatsService {
         existingPokemonStats.setId(pokemonStats.getId());
         existingPokemonStats.setHp(pokemonStats.getHp());
         existingPokemonStats.setAtk(pokemonStats.getAtk());
-        existingPokemonStats.setSpAtk(pokemonStats.getSpAtk());
         existingPokemonStats.setDef(pokemonStats.getDef());
-        existingPokemonStats.setSpDef(pokemonStats.getSpDef());
         existingPokemonStats.setSpd(pokemonStats.getSpd());
         existingPokemonStats.setHeight(pokemonStats.getHeight());
         existingPokemonStats.setWeight(pokemonStats.getWeight());

@@ -29,6 +29,6 @@ public class Trainer {
     @Column (name = "hometown")
     private String hometown;
 
-    @OneToMany (mappedBy = "trainer" ,cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "trainer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<Pokemon> pokemonList;
 }

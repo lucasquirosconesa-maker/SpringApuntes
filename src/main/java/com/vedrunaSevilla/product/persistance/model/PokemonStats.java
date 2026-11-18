@@ -9,44 +9,40 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity 
-@Table (name = "pokemon_abilities")
+@Table (name = "pokemon_stats")
 @NoArgsConstructor
-@Data 
+@Getter
+@Setter
 public class PokemonStats {
     @OneToOne ( fetch = FetchType.LAZY)
-    @JoinColumn (name = "pokemon_id" , referencedColumnName="pokemon_id")
+    @JoinColumn (name = "pokemon_id" , referencedColumnName="id")
     private Pokemon pokemon;
 
     @Id 
-    @Column (name = "pokemon_id")
+    @Column (name = "id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @Column (name = "Hp")
     private int hp;
 
-    @Column (name = "Attack")
+    @Column (name = "attack")
     private int atk;
 
-    @Column (name = "Sp.Attack")
-    private int spAtk;
-
-    @Column (name = "Defense")
+    @Column (name = "defense")
     private int def;
 
-    @Column (name = "Sp.Defense")
-    private int spDef;
-
-    @Column (name = "Speed")
+    @Column (name = "speed")
     private int spd;
 
-    @Column (name = "Height")
+    @Column (name = "height")
     private float height;
 
-    @Column (name = "Weight")
+    @Column (name = "weight")
     private float weight;
 }

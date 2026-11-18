@@ -13,36 +13,39 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity 
-@Table (name = "pokemons")
+@Table (name = "pokemon")
 @NoArgsConstructor 
-@Data 
+@Getter
+@Setter
 public class Pokemon {
     @Id 
-    @Column (name = "pokemon_id")
+    @Column (name = "id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "pokemon_name")
+    @Column (name = "name")
     private String name;
 
-    @Column(name = "pokemon_type") 
+    @Column(name = "type") 
     private String type;
 
-    @Column(name = "pokemon_description") 
+    @Column(name = "description") 
     private String description;
 
-    @Column (name = "pokemon_url_image")
+    @Column (name = "imagen_url")
     private String url;
 
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trainer_id", referencedColumnName = "id")
     private Trainer trainer;
 
     @ManyToMany ( fetch = FetchType.LAZY)
-    @JoinTable (name = "pokemon_abilities", joinColumns = {@JoinColumn(name = "pokemon_id", referencedColumnName = "pokemon_id")}
-    , inverseJoinColumns = {@JoinColumn(name = "ability_id", referencedColumnName = "ability_id")})
+    @JoinTable (name = "pokemon_abilities", joinColumns = {@JoinColumn(name = "pokemon_id", referencedColumnName = "id")}
+    , inverseJoinColumns = {@JoinColumn(name = "ability_id", referencedColumnName = "id")})
     List<PokemonAbility> abilityList;
 }

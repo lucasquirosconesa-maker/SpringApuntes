@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS pokemon (
     imagen_url VARCHAR(255),
     `type`     VARCHAR(45),
     trainer_id BIGINT,
+    `description` VARCHAR(255),
     PRIMARY KEY (id),
     CONSTRAINT fk_pokemon_trainer
         FOREIGN KEY (trainer_id) REFERENCES trainers (id)

@@ -30,8 +30,9 @@ public class PokemonAbilityController {
     PokemonAbilityService pokemonAbilityService;
     Converter converter;
 
-    PokemonAbilityController(PokemonAbilityService pokemonAbilityService) {
+    PokemonAbilityController(PokemonAbilityService pokemonAbilityService, Converter converter) {
         this.pokemonAbilityService = pokemonAbilityService;
+        this.converter = converter;
     }
 
     @GetMapping ("/abilities")

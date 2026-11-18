@@ -24,8 +24,9 @@ public class PokemonStatsController {
     PokemonStatsService pokemonStatsService;
     Converter converter;
 
-    PokemonStatsController(PokemonStatsService pokemonStatsService) {
+    PokemonStatsController(PokemonStatsService pokemonStatsService, Converter converter) {
         this.pokemonStatsService = pokemonStatsService;
+        this.converter = converter;
     }
 
     @GetMapping 

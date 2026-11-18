@@ -3,7 +3,8 @@ spring:
     name: Producto
   datasource:
     url: jdbc:mysql://localhost:3306/pokemondb?createDatabaseIfNotExist=true&useUnicode=true
-    password: Rafael27
+    username: root
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

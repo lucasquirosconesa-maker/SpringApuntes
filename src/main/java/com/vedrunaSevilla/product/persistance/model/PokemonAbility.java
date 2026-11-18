@@ -6,19 +6,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity 
-@Table (name = "pokemon_abilities")
+@Table (name = "abilities")
 @NoArgsConstructor
-@Data 
+@Getter
+@Setter
 public class PokemonAbility {
     @Id 
-    @Column (name = "pokemon_ability_id")
+    @Column (name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column (name = "pokemon_ability_name")
+    @Column (name = "name")
     private String name;
     @Column (name = "description")
     private String description;

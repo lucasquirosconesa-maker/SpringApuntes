@@ -28,8 +28,9 @@ public class PokemonController {
     PokemonService pokemonService;
     Converter converter;
 
-    PokemonController(PokemonService pokemonService) {
+    PokemonController(PokemonService pokemonService, Converter converter) {
         this.pokemonService = pokemonService;
+        this.converter = converter;
     }
 
     @GetMapping 
